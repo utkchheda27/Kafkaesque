@@ -6,32 +6,32 @@ bin/kafka-storage.sh random-uuid
 ```
 Example Cluster id:
 ```bash
-abcd1234-xyz
+abcd1234
 ```
 Formatting Storage:
 ```bash
-bin/kafka-storage.sh format -t abcd1234-xyz -c config/kraft/server.properties
+bin/kafka-storage.sh format -t abcd1234 -c config/kraft/server.properties
 ```
 Starting the cluster:
 ```bash
-bin/kafka-server-start.sh config/kraft/server.properties
+bin/kafka-server-start.sh config/server.properties
 ```
 Start controller1 (node.id=1)
 ```bash
-bin/kafka-server-start.sh "config/kraft/controller1.properties" > controller1.log 2>&1 
+bin/kafka-storage.sh format -t abcd1234 -c config/controller1.properties
 ```
 
-Start controller1 (node.id=2)
+Start controller2 (node.id=2)
 ```bash
-bin/kafka-server-start.sh "config/kraft/controller1.properties" > controller2.log 2>&1 
+bin/kafka-storage.sh format -t abcd1234 -c config/controller1.properties
 ```
 Starting broker 1:
 ```bash
-bin/kafka-server-start.sh config/kraft/server.properties
+bin/kafka-storage.sh format -t abcd1234 -c config/broker1.properties
 ```
 Starting broker 2:
 ```bash
-bin/kafka-server-start.sh config/kraft/server-2.properties
+bin/kafka-storage.sh format -t abcd1234 -c config/broker2.properties
 ```
 Creating a topic:
 ```bash

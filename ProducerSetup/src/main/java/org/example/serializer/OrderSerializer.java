@@ -32,6 +32,7 @@ public class OrderSerializer implements Serializer<Order> {
             //readValue: parsing or deserializing json string to object
             //writeValue: java object to serialized json string....writeValue(),.writeValueAsString()
 
+            //actually converted entire order to json, but should only expose those fields which are needed using objectMapper
             String json = objectMapper.writeValueAsString(order);
             logger.debug("Serialized Order {} to JSON: {}", order.getOrderId(), json);
             return json.getBytes(StandardCharsets.UTF_8);

@@ -22,7 +22,8 @@ import java.util.Map;
 // and the application will not be able to consume messages from Kafka topics.
 public class KafkaProducerConfig {
 
-    //configs for topic
+    //configs for topic..topic autocreated if not existing on appln startup,
+    // but we can also create it manually using AdminClient or using topicBuilder
     //creating topic using topicBuilder with added custom configs instead of from properties file
     @Bean
     public NewTopic orderEventsTopic(){ //NewTopic is object type from Kafka..can have custom type too
@@ -66,6 +67,7 @@ public class KafkaProducerConfig {
     }
 
     // Configure KafkaTemplate with the ProducerFactory
+    //at the end KafkaTemplate is what's needed hence the using the producerFactory bean, create the kafkaTemplate bean
     @Bean
     public KafkaTemplate<String, Order> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());

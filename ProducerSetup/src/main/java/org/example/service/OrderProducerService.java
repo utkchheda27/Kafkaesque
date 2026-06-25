@@ -35,6 +35,8 @@ public class OrderProducerService {
             return false;
         }
 
+        //just .send() happening in background thread, so we can return true here,
+        // but we can also add callback to check if it was successful or not
         try {
             logger.info("Sending order with ID: {} to Kafka topic", key);
 

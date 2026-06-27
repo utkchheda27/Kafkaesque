@@ -72,3 +72,12 @@ jps -l
 ```bash
 kill -9 <pid1> <pid2> <pid3> <pid4>
 ```
+
+Seeing logs for topic-partitions:
+```bash
+bin/kafka-dump-log.sh --deep-iteration --print-data-log --files /tmp/broker1-logs/order-events-3/00000000000000000000.log
+Dumping /tmp/broker1-logs/order-events-3/00000000000000000000.log
+```
+
+Once, consumer starts processing events, can see _consumer_offsets topic-partitions logs for broker1
+![img.png](assets/images/consumer_offset.png)

@@ -46,3 +46,29 @@ Consuming messages from the topic:
 bin/kafka-console-consumer.sh --topic my-topic --bootstrap-server localhost:9092 --from-beginning
 ```
 This setup allows you to run a Kafka cluster using the KRaft mode, which eliminates the need for ZooKeeper. The cluster configuration is defined in the `server.properties` file, and you can manage topics and messages using the provided Kafka scripts.
+
+To run the script:(have already given all permisions to read,write,run using chmod command)
+```bash
+chmod +x start-kafka-cluster.sh
+```
+To start the cluster, run the script:`
+```bash
+./start-kafka-cluster.sh
+```
+
+Checking cluster health:
+```bash
+bin/kafka-metadata-quorum.sh \
+  --bootstrap-server localhost:9092 \
+  describe --status
+  ```
+![img.png](assets/images/img.png)
+
+
+Killing the processes of the components:
+```bash
+jps -l
+```
+```bash
+kill -9 <pid1> <pid2> <pid3> <pid4>
+```
